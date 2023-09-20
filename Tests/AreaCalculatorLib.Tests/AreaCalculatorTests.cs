@@ -33,4 +33,19 @@ public class AreaCalculatorTests
             var triangle = new Triangle(10, 4, 5);
         });
     }
+
+    [Fact]
+    public void CalculateAreaInCompileTime_Possible()
+    {
+        var circle = new Circle(4);
+        var triangle = new Triangle(3, 4, 5);
+
+        var circleArea = CalculateArea(circle);
+        var triangleArea = CalculateArea(triangle);
+
+        Assert.True(circleArea == 50.27M && triangleArea == 6M);
+    }
+
+    public decimal CalculateArea(IShape shape)
+        => shape.CalculateArea();
 }
